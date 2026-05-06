@@ -33,7 +33,7 @@ function Experience() {
               <h2 className="text-xl font-semibold">Full Stack Developer Intern</h2>
               <span className="text-sm text-muted-foreground">@ Volobot</span>
             </div>
-            <p className="text-sm text-muted-foreground mt-1">Sept 2025 – Present</p>
+            <p className="text-sm text-muted-foreground mt-1">Sept 2025 – Present • Onsite</p>
           </div>
         </div>
 
