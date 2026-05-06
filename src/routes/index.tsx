@@ -1,7 +1,10 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion } from "framer-motion";
-import { ArrowRight, Github, Linkedin, Mail, Sparkles } from "lucide-react";
-import profile from "../assets/profile.jpg";
+import { createFileRoute } from "@tanstack/react-router";
+import { HeroSection } from "../components/sections/HeroSection";
+import { AboutSection } from "../components/sections/AboutSection";
+import { ProjectsSection } from "../components/sections/ProjectsSection";
+import { ExperienceSection } from "../components/sections/ExperienceSection";
+import { CertificationsSection } from "../components/sections/CertificationsSection";
+import { ContactSection } from "../components/sections/ContactSection";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -15,93 +18,18 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   return (
-    <div className="relative overflow-hidden">
-      <div className="absolute inset-0 gradient-hero pointer-events-none" />
-      <section className="relative mx-auto max-w-6xl px-6 pt-16 pb-24 md:pt-24 md:pb-32 grid md:grid-cols-2 gap-12 items-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="order-2 md:order-1"
-        >
-          <span className="inline-flex items-center gap-2 rounded-full bg-primary-soft border border-primary/30 px-3 py-1 text-xs font-medium text-foreground/80">
-            <Sparkles size={14} className="text-primary-foreground/80" />
-            Available for opportunities
-          </span>
-          <h1 className="mt-5 text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-balance leading-[1.05]">
-            ANIKET PRAKASH<br />
-            <span className="bg-primary px-2 rounded-lg">MEHATAR</span>
-          </h1>
-          <p className="mt-4 text-xl font-semibold text-foreground/80">Full Stack Developer</p>
-          <p className="mt-3 text-base md:text-lg text-muted-foreground max-w-lg">
-            Building scalable web and mobile applications with modern technologies.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              to="/projects"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-soft hover:shadow-elegant hover:-translate-y-0.5 transition-all"
-            >
-              View Projects <ArrowRight size={16} />
-            </Link>
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-semibold hover:bg-primary-soft transition-colors"
-            >
-              Contact Me
-            </Link>
-          </div>
-          <div className="mt-8 flex items-center gap-3">
-            <a href="https://github.com/" target="_blank" rel="noreferrer" aria-label="GitHub"
-              className="p-2.5 rounded-full bg-card border border-border hover:bg-primary hover:border-primary transition-all hover:scale-110">
-              <Github size={18} />
-            </a>
-            <a href="https://linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn"
-              className="p-2.5 rounded-full bg-card border border-border hover:bg-primary hover:border-primary transition-all hover:scale-110">
-              <Linkedin size={18} />
-            </a>
-            <a href="mailto:aniketmehatar2004@gmail.com" aria-label="Email"
-              className="p-2.5 rounded-full bg-card border border-border hover:bg-primary hover:border-primary transition-all hover:scale-110">
-              <Mail size={18} />
-            </a>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.92 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="order-1 md:order-2 flex justify-center md:justify-end"
-        >
-          <div className="relative">
-            <div className="absolute -inset-4 rounded-full gradient-primary blur-2xl opacity-60" />
-            <div className="relative rounded-full p-1.5 bg-primary shadow-elegant">
-              <img
-                src={profile}
-                alt="Aniket Prakash Mehatar portrait"
-                width={384}
-                height={384}
-                className="w-72 h-72 md:w-96 md:h-96 rounded-full object-cover bg-card relative "
-              />
-            </div>
-          </div>
-        </motion.div>
-      </section>
-
-      <section className="relative mx-auto max-w-6xl px-6 pb-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {[
-            { k: "2+", v: "Years Coding" },
-            { k: "10+", v: "Projects Built" },
-            { k: "6+", v: "Technologies" },
-            { k: "1", v: "Internship" },
-          ].map((s) => (
-            <div key={s.v} className="rounded-2xl bg-card border border-border p-6 text-center hover:shadow-soft hover:-translate-y-0.5 transition-all">
-              <div className="text-3xl font-bold">{s.k}</div>
-              <div className="mt-1 text-sm text-muted-foreground">{s.v}</div>
-            </div>
-          ))}
-        </div>
-      </section>
+    <div className="flex flex-col">
+      <HeroSection />
+      
+      {/* These sections are visible on mobile to make it a "single page" experience */}
+      {/* On desktop, they are also visible here, but the separate routes still exist */}
+      <div className="mx-auto max-w-6xl px-6 w-full space-y-24 pb-24">
+        <AboutSection />
+        <ExperienceSection />
+        <ProjectsSection />
+        <CertificationsSection />
+        <ContactSection />
+      </div>
     </div>
   );
 }

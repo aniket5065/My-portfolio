@@ -122,6 +122,17 @@ export function Navbar() {
                   <li key={l.to}>
                     <Link
                       to={l.to}
+                      hash={l.to === "/" ? "top" : l.to.replace("/", "")}
+                      onClick={(e) => {
+                        if (pathname === "/") {
+                          e.preventDefault();
+                          const target = l.to === "/" ? "top" : l.to.replace("/", "");
+                          document.getElementById(target)?.scrollIntoView({ behavior: "smooth" });
+                          setOpen(false);
+                        } else {
+                          setOpen(false);
+                        }
+                      }}
                       className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
                         active
                           ? "bg-primary text-primary-foreground shadow-soft"
