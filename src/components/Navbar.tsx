@@ -162,7 +162,7 @@ export function Navbar() {
             </p>
             <div className="flex items-center gap-2">
               <a
-                href="https://github.com/"
+                href="https://github.com/aniket5065"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="GitHub"
@@ -171,7 +171,7 @@ export function Navbar() {
                 <Github size={16} />
               </a>
               <a
-                href="https://linkedin.com/"
+                href="https://www.linkedin.com/in/mehataraniket"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="LinkedIn"

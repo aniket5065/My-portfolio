@@ -8,11 +8,11 @@ export function Footer() {
           © {new Date().getFullYear()} Aniket Prakash Mehatar. 
         </p>
         <div className="flex items-center gap-3">
-          <a href="https://github.com/" target="_blank" rel="noreferrer" aria-label="GitHub"
+          <a href="https://github.com/aniket5065" target="_blank" rel="noreferrer" aria-label="GitHub"
              className="p-2 rounded-full bg-card border border-border hover:bg-primary hover:border-primary transition-colors">
             <Github size={18} />
           </a>
-          <a href="https://linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn"
+          <a href="https://www.linkedin.com/in/mehataraniket" target="_blank" rel="noreferrer" aria-label="LinkedIn"
              className="p-2 rounded-full bg-card border border-border hover:bg-primary hover:border-primary transition-colors">
             <Linkedin size={18} />
           </a>

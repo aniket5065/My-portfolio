@@ -31,11 +31,11 @@ export function ContactSection() {
             </div>
           </a>
           <div className="pt-2 flex gap-2">
-            <a href="https://github.com/" target="_blank" rel="noreferrer" aria-label="GitHub"
+            <a href="https://github.com/aniket5065" target="_blank" rel="noreferrer" aria-label="GitHub"
                className="p-2.5 rounded-full bg-card border border-border hover:bg-primary transition-colors">
               <Github size={18} />
             </a>
-            <a href="https://linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn"
+            <a href="https://www.linkedin.com/in/mehataraniket" target="_blank" rel="noreferrer" aria-label="LinkedIn"
                className="p-2.5 rounded-full bg-card border border-border hover:bg-primary transition-colors">
               <Linkedin size={18} />
             </a>
