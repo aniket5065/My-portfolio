@@ -14,93 +14,144 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
+  };
+
   return (
-    <div className="relative overflow-hidden">
-      <div className="absolute inset-0 gradient-hero pointer-events-none" />
-      <section className="relative mx-auto max-w-6xl px-6 pt-16 pb-24 md:pt-24 md:pb-32 grid md:grid-cols-2 gap-12 items-center">
+    <div className="relative min-h-screen overflow-hidden bg-mesh pt-20">
+      {/* Dynamic Background Elements */}
+      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-primary/10 blur-[120px] rounded-full" />
+      <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-secondary/10 blur-[120px] rounded-full" />
+
+      <section className="relative mx-auto max-w-6xl px-6 py-12 md:py-24 grid lg:grid-cols-[1.2fr_0.8fr] gap-16 items-center">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="order-2 md:order-1"
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="order-2 lg:order-1"
         >
-          <span className="inline-flex items-center gap-2 rounded-full bg-primary-soft border border-primary/30 px-3 py-1 text-xs font-medium text-foreground/80">
-            <Sparkles size={14} className="text-primary-foreground/80" />
-            Available for opportunities
-          </span>
-          <h1 className="mt-5 text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-balance leading-[1.05]">
-            ANIKET PRAKASH<br />
-            <span className="bg-primary px-2 rounded-lg">MEHATAR</span>
-          </h1>
-          <p className="mt-4 text-xl font-semibold text-foreground/80">Full Stack Developer</p>
-          <p className="mt-3 text-base md:text-lg text-muted-foreground max-w-lg">
-            Building scalable web and mobile applications with modern technologies.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <motion.div variants={item}>
+            <span className="inline-flex items-center gap-2 rounded-full bg-primary-soft border border-primary/20 px-4 py-1.5 text-xs font-bold text-primary tracking-wide uppercase">
+              Open to new opportunities
+            </span>
+          </motion.div>
+          
+          <motion.h1 
+            variants={item}
+            className="mt-8 text-5xl sm:text-6xl md:text-8xl font-black tracking-tight leading-[0.9] text-balance"
+          >
+            ANIKET <br />
+            <span className="text-glow text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_auto] animate-gradient-x">
+              MEHATAR
+            </span>
+          </motion.h1>
+
+          <motion.p 
+            variants={item}
+            className="mt-8 text-xl md:text-2xl font-medium text-foreground/80 max-w-xl leading-relaxed"
+          >
+            I craft <span className="text-primary font-bold">scalable digital experiences</span> with modern web and mobile technologies.
+          </motion.p>
+
+          <motion.div variants={item} className="mt-10 flex flex-wrap gap-4">
             <Link
               to="/projects"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-soft hover:shadow-elegant hover:-translate-y-0.5 transition-all"
+              className="group relative inline-flex items-center gap-2 rounded-2xl bg-primary px-8 py-4 text-base font-bold text-primary-foreground shadow-glow hover:shadow-premium hover:-translate-y-1 transition-all overflow-hidden"
             >
-              View Projects <ArrowRight size={16} />
+              <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+              <span className="relative z-10">Explore Work</span>
+              <ArrowRight size={20} className="relative z-10 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-semibold hover:bg-primary-soft transition-colors"
+              className="inline-flex items-center gap-2 rounded-2xl border border-border bg-card/50 backdrop-blur-md px-8 py-4 text-base font-bold hover:bg-primary-soft transition-all hover:-translate-y-1"
             >
-              Contact Me
+              Get in Touch
             </Link>
-          </div>
-          <div className="mt-8 flex items-center gap-3">
-            <a href="https://github.com/" target="_blank" rel="noreferrer" aria-label="GitHub"
-              className="p-2.5 rounded-full bg-card border border-border hover:bg-primary hover:border-primary transition-all hover:scale-110">
-              <Github size={18} />
-            </a>
-            <a href="https://linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn"
-              className="p-2.5 rounded-full bg-card border border-border hover:bg-primary hover:border-primary transition-all hover:scale-110">
-              <Linkedin size={18} />
-            </a>
-            <a href="mailto:aniketmehatar2004@gmail.com" aria-label="Email"
-              className="p-2.5 rounded-full bg-card border border-border hover:bg-primary hover:border-primary transition-all hover:scale-110">
-              <Mail size={18} />
-            </a>
-          </div>
+          </motion.div>
+
+          <motion.div variants={item} className="mt-12 flex items-center gap-4">
+            {[
+              { icon: Github, href: "https://github.com/", label: "GitHub" },
+              { icon: Linkedin, href: "https://linkedin.com/", label: "LinkedIn" },
+              { icon: Mail, href: "mailto:aniketmehatar2004@gmail.com", label: "Email" },
+            ].map((s) => (
+              <a 
+                key={s.label} 
+                href={s.href} 
+                target="_blank" 
+                rel="noreferrer" 
+                aria-label={s.label}
+                className="p-3.5 rounded-2xl bg-card/50 backdrop-blur-md border border-border hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all hover:scale-110 shadow-sm"
+              >
+                <s.icon size={22} />
+              </a>
+            ))}
+          </motion.div>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.92 }}
+          initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="order-1 md:order-2 flex justify-center md:justify-end"
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+          className="order-1 lg:order-2 relative"
         >
-          <div className="relative">
-            <div className="absolute -inset-4 rounded-full gradient-primary blur-2xl opacity-60" />
-            <div className="relative rounded-full p-1.5 bg-primary shadow-elegant">
+          <div className="relative group">
+            <div className="absolute -inset-8 rounded-full bg-gradient-to-tr from-primary/20 to-secondary/20 blur-3xl opacity-50 group-hover:opacity-80 transition-opacity duration-500" />
+            <div className="relative aspect-square w-72 h-72 md:w-96 md:h-96 mx-auto rounded-full overflow-hidden border-4 border-white/20 dark:border-white/10 shadow-premium">
               <img
                 src={profile}
-                alt="Aniket Prakash Mehatar portrait"
-                width={384}
-                height={384}
-                className="w-72 h-72 md:w-96 md:h-96 rounded-full object-cover bg-card relative "
+                alt="Aniket Prakash Mehatar"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 glass px-6 py-2 rounded-full whitespace-nowrap shadow-xl">
+                <p className="text-xs font-black text-primary uppercase tracking-widest text-center">Based in India</p>
+              </div>
             </div>
           </div>
         </motion.div>
       </section>
 
-      <section className="relative mx-auto max-w-6xl px-6 pb-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <section className="relative mx-auto max-w-6xl px-6 pb-24">
+        <motion.div 
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-6"
+        >
           {[
-            { k: "2+", v: "Years Coding" },
-            { k: "10+", v: "Projects Built" },
-            { k: "6+", v: "Technologies" },
-            { k: "1", v: "Internship" },
+            { k: "2+", v: "Years Experience", color: "from-blue-500/20" },
+            { k: "15+", v: "Project Shipped", color: "from-purple-500/20" },
+            { k: "10+", v: "Tech Stack", color: "from-indigo-500/20" },
+            { k: "100%", v: "Dedication", color: "from-pink-500/20" },
           ].map((s) => (
-            <div key={s.v} className="rounded-2xl bg-card border border-border p-6 text-center hover:shadow-soft hover:-translate-y-0.5 transition-all">
-              <div className="text-3xl font-bold">{s.k}</div>
-              <div className="mt-1 text-sm text-muted-foreground">{s.v}</div>
-            </div>
+            <motion.div 
+              key={s.v} 
+              variants={item}
+              className={`relative group p-8 rounded-[32px] bg-card/50 backdrop-blur-md border border-border hover:border-primary/50 transition-all hover:shadow-premium overflow-hidden`}
+            >
+              <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${s.color} to-transparent blur-2xl group-hover:scale-150 transition-transform duration-500`} />
+              <div className="relative z-10">
+                <div className="text-4xl font-black text-foreground group-hover:text-primary transition-colors">{s.k}</div>
+                <div className="mt-2 text-sm font-bold text-muted-foreground uppercase tracking-widest">{s.v}</div>
+              </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </section>
     </div>
   );

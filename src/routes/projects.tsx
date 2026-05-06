@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "../components/PageShell";
 import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+import { ArrowRight, ExternalLink, Github } from "lucide-react";
 import stayo from "../assets/project-stayo.jpg";
 import nextrip from "../assets/project-nextrip.jpg";
 
@@ -36,45 +36,53 @@ const projects = [
 
 function Projects() {
   return (
-    <PageShell title="Projects" subtitle="A selection of things I've designed, built, and shipped.">
-      <div className="grid md:grid-cols-2 gap-6">
+    <PageShell title="Selected Work" subtitle="A collection of digital products I've built from the ground up, focusing on performance and user experience.">
+      <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
         {projects.map((p, i) => (
           <motion.article
             key={p.title}
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="group rounded-2xl bg-card border border-border overflow-hidden hover:shadow-elegant hover:-translate-y-1 transition-all"
+            transition={{ duration: 0.8, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="group relative rounded-[32px] overflow-hidden glass shadow-premium hover:shadow-glow transition-all duration-500"
           >
-            <div className="aspect-[16/10] overflow-hidden bg-primary-soft">
+            <div className="aspect-[16/10] overflow-hidden relative">
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <img
                 src={p.image}
                 alt={p.title}
                 loading="lazy"
                 width={1024}
                 height={640}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
               />
+              <div className="absolute top-4 right-4 z-20 flex gap-2 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                <a href={p.github} target="_blank" rel="noreferrer" className="p-3 rounded-full bg-white/20 backdrop-blur-md hover:bg-primary hover:text-primary-foreground transition-all">
+                  <Github size={20} />
+                </a>
+              </div>
             </div>
-            <div className="p-6">
-              <h3 className="text-xl font-semibold">{p.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
-              <div className="mt-4 flex flex-wrap gap-1.5">
+            <div className="p-8">
+              <h3 className="text-2xl font-black group-hover:text-primary transition-colors">{p.title}</h3>
+              <p className="mt-4 text-muted-foreground leading-relaxed font-medium">{p.desc}</p>
+              <div className="mt-6 flex flex-wrap gap-2">
                 {p.tech.map((t) => (
-                  <span key={t} className="text-xs px-2 py-1 rounded-md bg-primary-soft border border-primary/30 font-medium">
+                  <span key={t} className="text-[10px] px-3 py-1.5 rounded-full bg-primary-soft border border-primary/10 font-black uppercase tracking-wider text-primary">
                     {t}
                   </span>
                 ))}
               </div>
-              <div className="mt-5 flex gap-2">
-                <a href={p.demo} target="_blank" rel="noreferrer"
-                   className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-primary text-sm font-semibold text-primary-foreground hover:shadow-soft transition-all">
-                  <ExternalLink size={14} /> Live Demo
-                </a>
+              <div className="mt-8 flex items-center justify-between">
+                {p.demo && (
+                  <a href={p.demo} target="_blank" rel="noreferrer"
+                     className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-primary text-sm font-bold text-primary-foreground shadow-glow hover:shadow-premium hover:-translate-y-1 transition-all">
+                    Live Preview <ExternalLink size={16} />
+                  </a>
+                )}
                 <a href={p.github} target="_blank" rel="noreferrer"
-                   className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-border bg-card text-sm font-semibold hover:bg-primary-soft transition-colors">
-                  <Github size={14} /> GitHub
+                   className="text-sm font-bold text-muted-foreground hover:text-primary transition-colors flex items-center gap-1.5">
+                  Source Code <ArrowRight size={16} />
                 </a>
               </div>
             </div>
