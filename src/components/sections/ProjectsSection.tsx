@@ -34,9 +34,9 @@ export function ProjectsSection() {
               opacity: 1, 
               y: 0, 
               scale: 1,
-              boxShadow: "var(--shadow-soft)" 
+              boxShadow: "var(--shadow-highlight)" 
             }}
-            whileHover={{ y: -8, scale: 1.02, boxShadow: "var(--shadow-elegant)" }}
+            whileHover={{ y: -8, scale: 1.02, boxShadow: "var(--shadow-highlight)" }}
             whileTap={{ scale: 0.98 }}
             viewport={{ once: false, amount: 0.5 }}
             transition={{ duration: 0.4 }}

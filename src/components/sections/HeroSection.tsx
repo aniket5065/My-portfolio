@@ -88,8 +88,8 @@ export function HeroSection() {
             <motion.div 
               key={s.v} 
               initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1, boxShadow: "var(--shadow-soft)" }}
-              whileHover={{ y: -5, scale: 1.05, boxShadow: "var(--shadow-elegant)" }}
+              whileInView={{ opacity: 1, scale: 1, boxShadow: "var(--shadow-highlight)" }}
+              whileHover={{ y: -5, scale: 1.05, boxShadow: "var(--shadow-highlight)" }}
               whileTap={{ scale: 0.95 }}
               viewport={{ once: false, amount: 0.6 }}
               transition={{ duration: 0.4 }}

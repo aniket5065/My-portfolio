@@ -10,8 +10,8 @@ export function ContactSection() {
       <div className="grid md:grid-cols-5 gap-6">
         <motion.aside 
           initial={{ opacity: 0, y: 20, scale: 0.98 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1, boxShadow: "var(--shadow-soft)" }}
-          whileHover={{ y: -5, scale: 1.01, boxShadow: "var(--shadow-elegant)" }}
+          whileInView={{ opacity: 1, y: 0, scale: 1, boxShadow: "var(--shadow-highlight)" }}
+          whileHover={{ y: -5, scale: 1.01, boxShadow: "var(--shadow-highlight)" }}
           whileTap={{ scale: 0.99 }}
           viewport={{ once: false, amount: 0.4 }}
           className="md:col-span-2 rounded-2xl bg-primary-soft border border-primary/30 p-7 space-y-5 transition-all duration-300"
@@ -44,8 +44,8 @@ export function ContactSection() {
 
         <motion.form
           initial={{ opacity: 0, y: 20, scale: 0.98 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1, boxShadow: "var(--shadow-soft)" }}
-          whileHover={{ y: -5, scale: 1.005, boxShadow: "var(--shadow-elegant)" }}
+          whileInView={{ opacity: 1, y: 0, scale: 1, boxShadow: "var(--shadow-highlight)" }}
+          whileHover={{ y: -5, scale: 1.005, boxShadow: "var(--shadow-highlight)" }}
           whileTap={{ scale: 0.995 }}
           viewport={{ once: false, amount: 0.4 }}
           onSubmit={(e) => { e.preventDefault(); setSent(true); }}

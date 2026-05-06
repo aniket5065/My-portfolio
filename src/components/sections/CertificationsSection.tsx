@@ -55,8 +55,8 @@ export function CertificationsSection() {
           <motion.div
             key={c.title}
             initial={{ opacity: 0, y: 12, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1, boxShadow: "var(--shadow-soft)" }}
-            whileHover={{ y: -5, scale: 1.02, boxShadow: "var(--shadow-elegant)" }}
+            whileInView={{ opacity: 1, y: 0, scale: 1, boxShadow: "var(--shadow-highlight)" }}
+            whileHover={{ y: -5, scale: 1.02, boxShadow: "var(--shadow-highlight)" }}
             whileTap={{ scale: 0.98 }}
             viewport={{ once: false, amount: 0.5 }}
             transition={{ duration: 0.4, delay: i * 0.08 }}
