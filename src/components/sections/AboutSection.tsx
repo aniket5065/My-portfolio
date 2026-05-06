@@ -75,7 +75,14 @@ export function AboutSection() {
   return (
     <div id="about" className="space-y-12 py-12">
       <section className="grid md:grid-cols-3 gap-6">
-        <div className="md:col-span-2 rounded-2xl bg-card border border-border p-8 shadow-soft">
+        <motion.div 
+          initial={{ opacity: 0, y: 20, scale: 0.98 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1, boxShadow: "var(--shadow-soft)" }}
+          whileHover={{ y: -5, scale: 1.01, boxShadow: "var(--shadow-elegant)" }}
+          whileTap={{ scale: 0.98 }}
+          viewport={{ once: false, amount: 0.4 }}
+          className="md:col-span-2 rounded-2xl bg-card border border-border p-8 transition-all duration-300"
+        >
           <div className="flex items-center gap-2 mb-3">
             <User className="w-5 h-5 text-foreground/70" />
             <h2 className="text-xl font-semibold">Professional Summary</h2>
@@ -85,8 +92,15 @@ export function AboutSection() {
             performance optimization, and user-centric solutions. I enjoy turning complex problems into clean, intuitive
             products that work beautifully across platforms.
           </p>
-        </div>
-        <div className="rounded-2xl bg-primary-soft border border-primary/30 p-8">
+        </motion.div>
+        <motion.div 
+          initial={{ opacity: 0, y: 20, scale: 0.98 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          whileHover={{ y: -5, scale: 1.01, boxShadow: "var(--shadow-soft)" }}
+          whileTap={{ scale: 0.98 }}
+          viewport={{ once: false, amount: 0.4 }}
+          className="rounded-2xl bg-primary-soft border border-primary/30 p-8 transition-all duration-300"
+        >
           <div className="flex items-center gap-2 mb-3">
             <GraduationCap className="w-5 h-5 text-foreground/70" />
             <h2 className="text-xl font-semibold">Education</h2>
@@ -94,7 +108,7 @@ export function AboutSection() {
           <p className="mt-2 font-medium">B.Tech CSE</p>
           <p className="text-sm text-muted-foreground">CSMSS College of Engineering</p>
           <p className="text-sm text-muted-foreground">2022 – 2026</p>
-        </div>
+        </motion.div>
       </section>
 
       <section>
@@ -106,11 +120,13 @@ export function AboutSection() {
           {skills.map((cat, i) => (
             <motion.div
               key={cat.category}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 12, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1, boxShadow: "var(--shadow-soft)" }}
+              whileHover={{ y: -5, scale: 1.02, boxShadow: "var(--shadow-elegant)" }}
+              whileTap={{ scale: 0.98 }}
+              viewport={{ once: false, amount: 0.5 }}
               transition={{ duration: 0.4, delay: i * 0.05 }}
-              className="rounded-2xl bg-card border border-border p-6 hover:shadow-soft transition-shadow"
+              className="rounded-2xl bg-card border border-border p-6 transition-all duration-300"
             >
               <div className="flex items-center gap-2 mb-3">
                 <cat.icon className="w-4 h-4 text-muted-foreground" />

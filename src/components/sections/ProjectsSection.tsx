@@ -29,11 +29,18 @@ export function ProjectsSection() {
         {projects.map((p, i) => (
           <motion.article
             key={p.title}
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="group rounded-2xl bg-card border border-border overflow-hidden hover:shadow-elegant hover:-translate-y-1 transition-all"
+            initial={{ opacity: 0, y: 16, scale: 0.98 }}
+            whileInView={{ 
+              opacity: 1, 
+              y: 0, 
+              scale: 1,
+              boxShadow: "var(--shadow-soft)" 
+            }}
+            whileHover={{ y: -8, scale: 1.02, boxShadow: "var(--shadow-elegant)" }}
+            whileTap={{ scale: 0.98 }}
+            viewport={{ once: false, amount: 0.5 }}
+            transition={{ duration: 0.4 }}
+            className="group rounded-2xl bg-card border border-border overflow-hidden transition-all duration-300"
           >
             <div className="aspect-[16/10] overflow-hidden bg-primary-soft">
               <img

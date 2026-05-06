@@ -85,10 +85,19 @@ export function HeroSection() {
             { k: "6+", v: "Technologies" },
             { k: "1", v: "Internship" },
           ].map((s) => (
-            <div key={s.v} className="rounded-2xl bg-card border border-border p-6 text-center hover:shadow-soft hover:-translate-y-0.5 transition-all">
+            <motion.div 
+              key={s.v} 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1, boxShadow: "var(--shadow-soft)" }}
+              whileHover={{ y: -5, scale: 1.05, boxShadow: "var(--shadow-elegant)" }}
+              whileTap={{ scale: 0.95 }}
+              viewport={{ once: false, amount: 0.6 }}
+              transition={{ duration: 0.4 }}
+              className="rounded-2xl bg-card border border-border p-6 text-center transition-all duration-300"
+            >
               <div className="text-3xl font-bold">{s.k}</div>
               <div className="mt-1 text-sm text-muted-foreground">{s.v}</div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>

@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Briefcase, CheckCircle2 } from "lucide-react";
 
 const responsibilities = [
@@ -12,7 +13,14 @@ export function ExperienceSection() {
   return (
     <div id="experience" className="py-12">
       <h2 className="text-3xl font-bold mb-8">Experience</h2>
-      <article className="rounded-2xl bg-card border border-border p-8 shadow-soft">
+      <motion.article 
+        initial={{ opacity: 0, y: 20, scale: 0.98 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1, boxShadow: "var(--shadow-soft)" }}
+        whileHover={{ y: -5, scale: 1.005, boxShadow: "var(--shadow-elegant)" }}
+        whileTap={{ scale: 0.99 }}
+        viewport={{ once: false, amount: 0.4 }}
+        className="rounded-2xl bg-card border border-border p-8 transition-all duration-300"
+      >
         <div className="flex items-start gap-4">
           <div className="p-3 rounded-xl bg-primary text-primary-foreground shrink-0">
             <Briefcase size={22} />
@@ -34,7 +42,7 @@ export function ExperienceSection() {
             </li>
           ))}
         </ul>
-      </article>
+      </motion.article>
     </div>
   );
 }
